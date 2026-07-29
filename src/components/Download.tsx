@@ -16,7 +16,6 @@ const Download: FC = () => {
 
   return (
     <section
-      id="downloads-section"
       className="w-full py-13 transition-colors duration-300  overflow-hidden"
     >
       {isMobile ? (

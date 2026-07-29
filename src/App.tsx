@@ -1,24 +1,9 @@
 import { ThemeProvider } from "./context/theme-provider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/ui/Navbar";
-import FAQ from "./Pages/FaqPage/FAQ";
 
 import ShuffleGrid from "./components/ShuffleGrid";
-import Download from "./components/Download";
-import Hero from "./components/Hero";
-import MacMockup from "./components/MockUp";
-import image from "@/assets/PictoPy_Logo.png";
-
-function HomePage() {
-  return (
-    <>
-      <Hero />
-      <Download />
-      <MacMockup image={image} />
-      <FAQ />
-    </>
-  );
-}
+import { HomePage } from "./Pages/HomePage";
 
 function AppContent() {
   return (

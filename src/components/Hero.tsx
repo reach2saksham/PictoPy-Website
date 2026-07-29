@@ -25,7 +25,10 @@ export default function Hero() {
         </div>
 
         {/* Heading */}
-        <h1 className="mt-15 min-[411px]:mt-2 text-5xl font-semibold text-[#202020] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] dark:text-white dark:[text-shadow:0px_4px_4px_rgba(0,0,0,0.15)] leading-tight tracking-tight md:text-[64px]">
+        <h1
+          className="mt-15 min-[411px]:mt-2 text-5xl font-semibold text-[#202020] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] dark:text-white dark:[text-shadow:0px_4px_4px_rgba(0,0,0,0.15)] leading-tight tracking-tight md:text-[64px]"
+          id="downloads-section"
+        >
           The most advanced
           <br />
           Open-Source Gallery

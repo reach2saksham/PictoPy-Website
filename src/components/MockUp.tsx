@@ -2,9 +2,15 @@ import { FaApple } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa6";
 import { IoBatteryFullOutline } from "react-icons/io5";
 
-export default function MacMockup({ image }: { image: string }) {
+export default function MacMockup({
+  image,
+  imageClassName,
+}: {
+  image: string;
+  imageClassName?: string;
+}) {
   return (
-    <section className="flex w-full justify-center">
+    <section className="flex w-full justify-center h-fit">
       {/* Outer Frame */}
       <div className="rounded-[19px] w-full border border-[#000000B8] dark:border-[#FFFFFF14] bg-[linear-gradient(0deg,rgba(0,0,0,0.72),rgba(0,0,0,0.72)),radial-gradient(85.77%_49.97%_at_51%_5.12%,rgba(255,150,150,0.11)_0%,rgba(222,226,255,0.08)_45.83%,rgba(241,242,255,0.02)_100%)] dark:bg-[linear-gradient(0deg,rgba(0,0,0,0.44),rgba(0,0,0,0.44)),radial-gradient(85.77%_49.97%_at_51%_5.12%,rgba(255,150,150,0.11)_0%,rgba(222,226,255,0.08)_45.83%,rgba(241,242,255,0.02)_100%)] backdrop-blur-[2px]">
         {/* Second Outer frame */}
@@ -52,7 +58,7 @@ export default function MacMockup({ image }: { image: string }) {
               alt="PictoPy mockup preview"
               aria-hidden="true"
               loading="lazy"
-              className="w-full object-contain bg-[#07080A]"
+              className={`w-full object-contain bg-[#07080A] ${imageClassName}`}
             />
           </div>
         </div>
