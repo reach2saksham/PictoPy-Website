@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+@theme {
+    --color-bg: var(--bg);
+    --color-bg-hover: var(--bg-hover);
+
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+
+    --color-primary: var(--primary);
+    --color-primary-text: var(--primary-text);
+    --color-primary-border: var(--primary-border);
+
+    --color-secondary: var(--secondary);
+    --color-accent: var(--accent);
+    --color-muted: var(--muted);
+    --color-destructive: var(--destructive);
+
+    --color-text: var(--text);
+    --color-text2: var(--text2);
+    --color-text3: var(--text3);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --radius: var(--radius);
+}
+
+/* Light Theme */
+:root {
+    --bg: #ffffff;
+    --bg-hover: #f2f2f2;
+
+    --text: #060606;
+    --text2: #6a6b6c;
+    --text3: #606060;
+
+    --surface: #ffffff;
+    --surface-2: #f8fafc;
+
+    --primary: #202020;
+    --primary-text: #ffffff;
+
+    --secondary: #f1f5f9;
+    --accent: #f1f5f9;
+    --muted: #f1f5f9;
+    --destructive: #ef4444;
+
+    --border: #e5e5e5;
+    --input: #e2e8f0;
+    --ring: #020817;
+
+    --radius: 0.5rem;
+}
+
+/* Dark Theme */
+:root.dark {
+    --bg: #070707;
+    --bg-hover: #1e1e1e;
+
+    --text: #ffffff;
+    --text2: #6a6b6c;
+    --text3: #9c9c9d;
+
+    --primary: #ffffff;
+    --primary-text: #2f3031;
+
+    --surface: #09090b;
+    --surface-2: #18181b;
+
+    --secondary: #27272a;
+    --accent: #27272a;
+    --muted: #27272a;
+    --destructive: #7f1d1d;
+
+    --border: #ffffff0f;
+    --input: #27272a;
+    --ring: #cbd5e1;
+
+    --radius: 0.5rem;
+}
+
+/* Apply global border style */
+svg * {
+    pointer-events: none;
+}
