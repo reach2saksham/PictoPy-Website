@@ -5,6 +5,7 @@ import MacMockup from "@/components/MockUp";
 
 import image from "@/assets/PictoPy_Logo.png";
 import MockUpWithDesc from "@/components/MockUpWithDesc";
+import Metrics from "@/components/Features";
 
 export function HomePage() {
   return (
@@ -19,7 +20,8 @@ export function HomePage() {
           management.
         </p>
       </div>
-      <MockUpWithDesc image={image}/>
+      <MockUpWithDesc image={image} />
+      <Metrics />
       <FAQ />
     </>
   );

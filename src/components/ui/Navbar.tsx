@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
 
           <div className="relative">
             <Button
-              className="flex items-center gap-1 hover:text-text3/70 transition"
+              className="flex rounded-lg items-center gap-1 hover:text-text3/70 transition"
               variant="ghost"
               onMouseEnter={() => setListShow(true)}
             >

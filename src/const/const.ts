@@ -104,3 +104,30 @@ export const platformConfig = {
     plateform: "linux",
   },
 } as const;
+
+export const metricsData = [
+  {
+    label: "METRIC #1",
+    value: "30%",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+  },
+  {
+    label: "METRIC #2",
+    value: "20+",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+  },
+  {
+    label: "METRIC #3",
+    value: "373 MB",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+  },
+  {
+    label: "METRIC #4",
+    value: "4.5/5",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+  },
+];
