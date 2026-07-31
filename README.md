@@ -3,8 +3,8 @@
 
 <!-- Organization Logo -->
 <div align="center" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
-  <img src="brand/logo.svg" width="175" alt="AOSSIE logo" >
-  <img src="brand/pictopy_logo.svg" width="175" alt="PictoPy logo" />
+  <img src="public/brand/icons/aossie_logo.svg" width="175" alt="AOSSIE logo" >
+  <img src="public/brand/icons/pictopy_logo.svg" width="175" alt="PictoPy logo" />
 
 </div>
 
@@ -40,9 +40,9 @@
 &nbsp;&nbsp;
 <!-- Youtube AOSSIE-->
 <a href="https://www.youtube.com/@AOSSIE-Org">
-  <img src="https://img.shields.io/youtube/channel/subscribers/UCKVVLbawY7Gej_3o2WKsoiA?style=flat&logo=youtube&logoColor=white%20&logoSize=auto&labelColor=FF0000&color=FF0000" alt="Youtube Badge"></a>
+  <img src="https://img.shields.io/youtube/channel/subscribers/UCKVVLbawY7Gej_3o2WKsoiA?style=flat&logo=youtube&logoColor=white%20&logoSize=auto&labelColor=FF0000&color=FF0000" alt="Youtube AOSSIE Badge"></a>
 <a href="https://www.youtube.com/@StabilityNexus">
-  <img src="https://img.shields.io/youtube/channel/subscribers/UCKVVLbawY7Gej_3o2WKsoiA?style=flat&logo=youtube&logoColor=white%20&logoSize=auto&labelColor=FF0000&color=FF0000" alt="Youtube Badge"></a>
+  <img src="https://img.shields.io/youtube/channel/subscribers/UCKVVLbawY7Gej_3o2WKsoiA?style=flat&logo=youtube&logoColor=white%20&logoSize=auto&labelColor=FF0000&color=FF0000" alt="Youtube YouTube Badge"></a>
 </p>
 
 
@@ -71,7 +71,7 @@ It runs entirely offline, keeping your photos and their analysis private — no 
 
 ---
 
-## 🚀 Features of PictoPy
+## 🚀 PictoPy's Features
 
 - **Smart Auto-Tagging** — automatically tags photos based on detected objects and recognized faces using YOLOv11 and FaceNet
 - **Face Clustering** — groups photos by person using DBSCAN clustering on face embeddings
@@ -103,13 +103,13 @@ It runs entirely offline, keeping your photos and their analysis private — no 
 
 In the checklist below, mark the items that have been completed for your project:
 
-* [x] The project has a logo (`brand/logo.svg`).
-* [x] The project has a favicon (`brand/favicon.ico`).
+* [x] The project has a logo (`public/brand/icons/pictopy_logo.svg`).
+* [x] The project has a favicon (`public/brand/icons/favicon.ico`).
 * [x] The web frontend:
    - [x] Has proper title and metadata.
    - [x] Has proper open graph metadata, to ensure that it is shown well when shared in social media.
    - [x] Has a footer and header with AOSSIE logos and social handles.
-   - [x] Is client-side rendered (`"use client"` configured for pages).
+   - [x] Uses Next.js Server Components by default with Client Components (`"use client"`) introduced only where interactive state is required.
    - [x] Is deployed to GitHub Pages via a GitHub Workflow (`.github/workflows/nextjs.yml`).
    - [x] Has automated CI build and lint validation (`.github/workflows/ci.yml`).
    - [x] Has CodeRabbit automated AI code review (`.coderabbit.yml`).
@@ -124,7 +124,7 @@ In the checklist below, mark the items that have been completed for your project
 - **Dual Theme System:** Flash-free light, dark, and system preferred themes using `next-themes` and Tailwind CSS v4 custom variants.
 - **Robust i18n & l10n:** Deeply integrated multi-language support:
   - Automatic locale detection based on browser preferences.
-  - Subpath routing (e.g., `/en`, `/hi`) with clean `as-needed` URL prefixing.
+  - Subpath routing (e.g., `/hi` for Hindi, and unprefixed `/` for English as default) with clean `as-needed` URL prefixing.
   - Sleek, interactive language switcher client component.
   - Zero-bundle-size footprint for static translations using Server Components & Client `useTranslations`.
 - **Developer Experience:** Strict TypeScript compilation and ES Lint setup.
@@ -141,18 +141,24 @@ Here is a breakdown of the key i18n directories and files:
 ```text
 ├── .github/
 │   └── workflows/          # GitHub Actions (CI, GitHub Pages deployment, merge conflict checks)
-├── brand/
-│   ├── logo.svg            # Vector logo
-│   ├── favicon.ico         # Browser tab icon
-│   └── Brand.md            # Official AOSSIE brand guidelines document
 ├── next.config.ts          # Alias-wrapped Next configuration
 ├── public/                 # Static assets, robots.txt, assetlinks.json, llms.txt
+│   ├── .well-known/
+│   ├── llms.txt
+│   ├── robots.txt
+│   └── brand/
+│       ├── Brand.md            # Official AOSSIE brand guidelines document
+│       └── icons/             
+│           ├── aossie_logo.svg              # AOSSIE Vector logo
+│           ├── stability_nexus_logo.svg     # Vector logo
+│           └── favicon.ico                  # Browser tab icon
 ├── src/
 │   ├── config/
 │   │   └── languages.ts        # Central registry of supported languages & locales
 │   ├── i18n/
 │   │   ├── routing.ts          # Core i18n routing parameters (locales, defaults)
 │   │   ├── request.ts          # Server-side translation dictionary loading configuration
+│   │   ├── metadata.ts         # Configuration data, SEO values, or reflection data for a project
 │   │   └── navigation.ts       # Type-safe navigation helpers (Link, useRouter, etc.)
 │   ├── messages/
 │   │   ├── en.json             # English translation dictionary
@@ -267,6 +273,8 @@ router.replace(pathname, { locale: 'hi' });
 The starter kit uses `next-themes` combined with Tailwind CSS v4's class-based custom variants to provide a responsive and flash-free theme experience.
 
 #### Customizing Colors
+
+**Preffered Method**
 Tailwind v4 is configured via CSS custom properties in [`src/app/[locale]/globals.css`](src/app/[locale]/globals.css). To adjust the default light and dark theme background or text colors, edit the root variables:
 
 ```css
@@ -331,7 +339,7 @@ Start the development server:
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it. The application will automatically detect your browser's language preferences and route you to `/en` or `/hi` (or fall back to the default language, English).
+Open [http://localhost:3000](http://localhost:3000) to view it. The application will automatically detect your browser's language preferences and route you to `/hi` for Hindi or `/` for English (the default locale, which omits the prefix).
 
 ### Building for Production
 
@@ -353,23 +361,34 @@ npm run start
 
 ## ⚙️ Initial Project Setup Checklist
 
-When bootstrapping a new project from this starter repository, update the following configurations to align with your project's branding, package naming, and hosting domains:
+When bootstrapping a new project from this starter repository, complete the following `TODO` setup checklist to align the repository with your project's branding, metadata, AI agent guidelines, and hosting configurations:
 
-### 1. Domain Names & Sitemap URL
-- **Sitemap Generator ([`src/app/sitemap.ts`](src/app/sitemap.ts))**: Replace the default fallback domain `https://pictopy.aossie.org` with your project's production domain, or set the `NEXT_PUBLIC_SITE_URL` environment variable in your production hosting panel.
-- **Search Crawler Rules ([`public/robots.txt`](public/robots.txt))**: Replace the sitemap URL domain `https://pictopy.aossie.org/sitemap.xml` with your production URL.
+### 1. Project Identity & Header Details
 
-### 2. Branding Guidelines & Assets
-- **Logo & Favicons ([`brand/`](brand/))**: Replace `logo.svg` and `favicon.ico` with your organization's custom logos. Copy these updated assets to the [`public/assets/icons/`](public/assets/icons/) directory as well (`public/assets/icons/aossie_logo.svg` and `public/assets/icons/favicon.ico`).
-- **Brand Documentation ([`brand/Brand.md`](brand/Brand.md))**: Document your custom color hex codes, typography selections, and asset paths here to guide future developers and AI coding agents.
+- **Project Title & Logo ([`README.md`](README.md))**: Update the main project header logo (`public/brand/icons/logo.svg`), title `<h1>TODO: Project Name</h1>`, project description, feature list, and tech stack.
+- **AI Agent Context ([`AGENTS.md`](AGENTS.md))**: Replace `# TODO: Project Title` and add project-specific directives and rules for AI coding agents.
+- **LLM Manifest ([`public/llms.txt`](public/llms.txt))**: Update `# TODO: Project Title` in the root LLM crawler policy.
+- **Community & Social Links ([`Contributors.md`](Contributors.md))**: Replace the `[TODO Channel](TODO)` placeholder with your project's Discord, Telegram, or chat channel link.
 
-### 3. SEO Structured Data
-- **Schema.org JSON-LD ([`src/app/[locale]/page.tsx`](src/app/[locale]/page.tsx))**: Locate the `jsonLd` object inside the `Home` component. Replace the default publisher URLs and name fields with your specific project metadata.
+### 2. Domain Names & Search Engine Crawlers
 
-### 4. Mobile & AI Platform Configurations
-- **Android App Links ([`public/.well-known/assetlinks.json`](public/.well-known/assetlinks.json))**: Change the package name `org.aossie.starter` and insert your Android application certificate SHA-256 fingerprint to handle incoming domain links on mobile.
-- **AI Agent Plugins ([`public/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json))**: Update the host URLs, contact emails, and description text to describe your final website's features to AI agents.
-- **LLM Crawler Rules ([`public/llms.txt`](public/llms.txt))**: Serves the root crawlers policy indicating allowing LLM bot indexing. Update if you wish to block specific AI search engines.
+- **Sitemap Generator ([`src/app/sitemap.ts`](src/app/sitemap.ts))**: Replace the default fallback domain `https://project.aossie.org` with your project's production domain in the source code or set the `NEXT_PUBLIC_SITE_URL` environment variable at build time (e.g., in `.github/workflows/nextjs.yml` or build pipeline settings).
+- **Search Crawler Rules ([`public/robots.txt`](public/robots.txt))**: Replace the sitemap URL placeholder domain `TODO 'project.aossie.org'` with your actual production domain.
+
+### 3. Branding Guidelines & Assets
+
+- **Logo & Favicons ([`public/brand/icons/`](public/brand/icons/))**: Replace `aossie_logo.svg` and `favicon.ico` with your organization's custom logos.
+- **Brand Documentation ([`public/brand/Brand.md`](public/brand/Brand.md))**: Document your custom color hex codes, typography selections, and asset paths here to guide future developers and AI coding agents.
+
+### 4. SEO & i18n Localization Metadata
+
+- **Schema.org JSON-LD ([`src/app/[locale]/page.tsx`](src/app/[locale]/page.tsx))**: Locate the `jsonLd` object inside the `Home` component. Update the `publisher.name`, `publisher.url`, and `publisher.logo` fields from `TODO` placeholders to your project metadata.
+- **Translation Catalogs ([`src/messages/en.json`](src/messages/en.json), [`src/messages/hi.json`](src/messages/hi.json))**: Update the `heading`, `metaTitle`, and `metaDescription` keys with your project's localized titles and descriptions.
+
+### 5. Mobile & AI Platform Configurations
+
+- **Android App Links ([`public/.well-known/assetlinks.json`](public/.well-known/assetlinks.json))**: Update the package name `TODO:org.aossie.starter` and insert your Android application certificate SHA-256 fingerprint (`TODO:...`).
+- **AI Agent Plugins ([`public/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json))**: Replace all `TODO` placeholders for `name_for_human`, `name_for_model`, `description_for_human`, `description_for_model`, host URLs, contact emails, and legal info links.
 
 
 ---
