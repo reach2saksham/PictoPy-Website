@@ -1,37 +1,65 @@
+"use client";
 import { FC, useEffect, useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { useDownloadLink } from "@/hooks/useDownloadLink";
-import { platformConfig } from "@/const/const";
 import { usePlatform } from "@/hooks/usePlatform";
+import { useLocale, useTranslations } from "next-intl";
+import type { IconType } from "react-icons";
+import { DiWindows } from "react-icons/di";
+import { SiLinux, SiApple } from "react-icons/si";
 
-type PlatformConfigItem = (typeof platformConfig)[keyof typeof platformConfig];
+type PlatformConfigItem = {
+  icon: IconType;
+  label: string;
+  platform: "mac" | "windows" | "linux";
+};
 
 type DownloadButtonProps = {
   value: PlatformConfigItem;
 };
 
 const Download: FC = () => {
-  const platformArray = Object.values(platformConfig);
   const { isMobile } = usePlatform();
+  const t = useTranslations("Home.Download");
+  const platformConfig = {
+    mac: {
+      icon: SiApple,
+      label: t("downloadMac"),
+      platform: "mac",
+    },
+    windows: {
+      icon: DiWindows,
+      label: t("downloadWindows"),
+      platform: "windows",
+    },
+    linux: {
+      icon: SiLinux,
+      label: t("downloadLinux"),
+      platform: "linux",
+    },
+  } as const;
+  const platformArray = Object.values(platformConfig);
 
   return (
-    <section
-      className="w-full py-13 transition-colors duration-300  overflow-hidden"
-    >
+    <section className="w-full py-13 transition-colors duration-300  overflow-hidden">
       {isMobile ? (
         <p className="font-mono text-center font-normal text-muted-foreground text-xs text-[#1e1e1e] dark:text-[#C1C1C1]">
-          You can use PictoPy on any Personal Computer.
+          {t("mobileDownload")}
           <br />
-          Be it Windows, Mac or Linux.
+          {t("mobileDownloadText")}
         </p>
       ) : (
         <>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {platformArray.map((value) => (
-              <DownloadButton key={value.plateform} value={value} />
+              <DownloadButton key={value.platform} value={value} />
             ))}
           </div>
-          <VersionBar />
+          <VersionBar
+            latest={t("latest")}
+            multiOsSupport={t("multiOsSupport")}
+            freeForever={t("freeForever")}
+          />
         </>
       )}
     </section>
@@ -42,7 +70,7 @@ export default Download;
 
 // CTA (Download button)
 function DownloadButton({ value }: DownloadButtonProps) {
-  const { link, loading } = useDownloadLink(value.plateform);
+  const { link, loading } = useDownloadLink(value.platform);
 
   return (
     <Button
@@ -65,13 +93,20 @@ interface ReleaseData {
   date: string;
 }
 
+type VersionBarProps = {
+  latest: string;
+  multiOsSupport: string;
+  freeForever: string;
+};
+
 // Version below CTA
-function VersionBar() {
+function VersionBar({ latest, multiOsSupport, freeForever }: VersionBarProps) {
   const [release, setRelease] = useState<ReleaseData>({
     version: "Loading...",
     date: "Loading...",
   });
 
+  const locale = useLocale();
   useEffect(() => {
     async function getRelease() {
       try {
@@ -85,7 +120,7 @@ function VersionBar() {
 
         setRelease({
           version: data.tag_name,
-          date: new Date(data.published_at).toLocaleDateString("en-US", {
+          date: new Date(data.published_at).toLocaleDateString(locale, {
             month: "short",
             day: "numeric",
             year: "numeric",
@@ -109,15 +144,17 @@ function VersionBar() {
 
         <span className="mx-5 h-2.5 w-px bg-text3" />
 
-        <span>Latest: {release.date}</span>
+        <span>
+          {latest}: {release.date}
+        </span>
 
         <span className="mx-5 h-2.5 w-px bg-text3" />
 
-        <span>Multi-OS Support</span>
+        <span>{multiOsSupport}</span>
 
         <span className="mx-5 h-2.5 w-px bg-text3" />
 
-        <span>Free Forever</span>
+        <span>{freeForever}</span>
       </div>
     </section>
   );

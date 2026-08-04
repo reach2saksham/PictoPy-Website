@@ -1,33 +1,69 @@
-import React, { Dispatch, SetStateAction, useContext, useState } from "react";
-import { Button } from "@/components/ui/Button";
+"use client";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { Button } from "@/components/ui/button";
 import { ThemeContext, ThemeOptions } from "@/context/theme-provider";
-import { FiChevronDown, FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import PictoPyLogo from "@/assets/PictoPy_Logo.png";
-import { navItems, platformConfig } from "@/const/const";
+import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import Link from "next/link";
+import PictoPyLogo from "@/assets/pictopy_logo.svg";
+import { platformConfig } from "@/const/const";
 import { usePlatform } from "@/hooks/usePlatform";
 import { useDownloadLink } from "@/hooks/useDownloadLink";
-
-const languages = ["English", "Hindi", "Spanish", "French", "German"];
+import Image from "next/image";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { useTranslations } from "next-intl";
 
 const Navbar: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
+
   const { theme, toggleTheme } = useContext(ThemeContext);
   const isDark = theme === ThemeOptions.Dark;
-  const [selectedLang, setSelectedLang] = useState<string>("English");
-  const [listShow, setListShow] = useState<boolean>(false);
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const platform = usePlatform();
   const { link, loading } = useDownloadLink(platform.platform);
   const { icon: Icon } = platformConfig[platform.platform];
 
+  const t = useTranslations("ThemeToggle");
+  const tN = useTranslations("Home.Navbar");
+
+  const navItems = [
+    {
+      label: tN("documentation"),
+      href: "/documentation",
+    },
+    {
+      label: tN("contribute"),
+      href: "/contribute",
+    },
+    {
+      label: tN("aboutUs"),
+      href: "/about",
+    },
+    {
+      label: tN("contact"),
+      href: "/contact",
+    },
+  ];
+  useEffect(() => {
+    const trueFunction = () => {
+      setMounted(true);
+    };
+    trueFunction();
+  }, []);
+
   return (
     <nav className="sticky top-4 z-999 w-full flex justify-center">
       <div className="h-19 w-full rounded-2xl border border-border flex items-center justify-between px-4  min-[1250px]:px-8 bg-[linear-gradient(#F8F9FA,#F8F9FA)] dark:bg-[linear-gradient(93.78deg,rgba(17,18,20,0.75)_4.87%,rgba(12,13,15,0.9)_75.88%)] shadow-[inset_0_1px_1px_1px_#00000026] dark:shadow-[inset_0_1px_1px_1px_#FFFFFF26]">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <img
-            src={PictoPyLogo}
+          <Image
+            src={PictoPyLogo.src}
             alt="PictoPy logo"
             width={32}
             height={32}
@@ -45,7 +81,7 @@ const Navbar: React.FC = () => {
           {navItems.map((item) => (
             <Link
               key={item.label}
-              to={item.href}
+              href={item.href}
               className="transition hover:text-text3/70"
             >
               {item.label}
@@ -53,34 +89,7 @@ const Navbar: React.FC = () => {
           ))}
 
           <div className="relative">
-            <Button
-              className="flex rounded-lg items-center gap-1 hover:text-text3/70 transition"
-              variant="ghost"
-              onMouseEnter={() => setListShow(true)}
-            >
-              {selectedLang}
-              <FiChevronDown
-                size={15}
-                className="transition-transform duration-200 group-hover:rotate-180"
-              />
-            </Button>
-            {listShow && (
-              <div className="absolute right-0 top-full mt-4 rounded-lg border border-border bg-bg p-1 translate-y-1 transition-all duration-200">
-                {languages.map((lang) => (
-                  <button
-                    key={lang}
-                    className="w-full rounded-md px-3 py-2 text-left text-sm text-text3 transition hover:bg-bg/10 hover:text-text3/80"
-                    onClick={() => {
-                      setSelectedLang(lang);
-                    }}
-                    onMouseEnter={() => setListShow(true)}
-                    onMouseLeave={() => setListShow(false)}
-                  >
-                    {lang}
-                  </button>
-                ))}
-              </div>
-            )}
+            <LanguageSwitcher />
           </div>
         </div>
 
@@ -90,20 +99,27 @@ const Navbar: React.FC = () => {
             className="transition rounded-lg"
             variant={"ghost"}
             onClick={toggleTheme}
+            aria-label={t("toggleTheme")}
           >
-            {isDark ? <FiSun size={24} /> : <FiMoon size={24} fill="#666465" />}
+            {isDark ? (
+              <FiSun size={24} />
+            ) : (
+              <FiMoon size={24} fill="currentColor" />
+            )}
           </Button>
           <div className="mx-3 h-6 w-px border border-text3" />
-          <Button
-            asChild
-            disabled={loading || !link}
-            className="h-9 px-3 rounded-lg flex items-center gap-2 text-sm font-medium transition"
-          >
-            <a href={link ?? "#"} target="_blank" rel="noopener noreferrer">
-              <Icon size={17} />
-              Download
-            </a>
-          </Button>
+          {mounted && (
+            <Button
+              asChild
+              disabled={loading || !link}
+              className="h-9 px-3 rounded-lg flex items-center gap-2 text-sm font-medium transition"
+            >
+              <a href={link ?? "#"} target="_blank" rel="noopener noreferrer">
+                <Icon size={17} />
+                Download
+              </a>
+            </Button>
+          )}
         </div>
 
         {/* Mobile */}
@@ -137,6 +153,35 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
   const platform = usePlatform();
   const { link, loading } = useDownloadLink(platform.platform);
   const { icon: Icon } = platformConfig[platform.platform];
+  const [mounted, setMounted] = useState(false);
+  const t = useTranslations("ThemeToggle");
+  const tN = useTranslations("Home.Navbar");
+
+  const navItems = [
+    {
+      label: tN("documentation"),
+      href: "/documentation",
+    },
+    {
+      label: tN("contribute"),
+      href: "/contribute",
+    },
+    {
+      label: tN("aboutUs"),
+      href: "/about",
+    },
+    {
+      label: tN("contact"),
+      href: "/contact",
+    },
+  ];
+  useEffect(() => {
+    const trueFunction = () => {
+      setMounted(true);
+    };
+    trueFunction();
+  }, []);
+
   return (
     <>
       {/* Overlay */}
@@ -160,8 +205,8 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
         <div className="flex items-center justify-between p-5">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <img
-              src={PictoPyLogo}
+            <Image
+              src={PictoPyLogo.src}
               alt="PictoPy logo"
               width={32}
               height={32}
@@ -187,13 +232,17 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
           {navItems.map((item) => (
             <Link
               key={item.label}
-              to={item.href}
+              href={item.href}
               className="rounded-lg px-3 py-3 text-text3 transition hover:text-text3/70 hover:bg-muted"
               onClick={() => setSidebarOpen(false)}
             >
               {item.label}
             </Link>
           ))}
+
+          <div className="relative place-self-center">
+            <LanguageSwitcher />
+          </div>
         </div>
 
         {/* Theme toggle and Download section */}
@@ -202,6 +251,7 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
             variant="ghost"
             onClick={toggleTheme}
             className="h-10 w-full justify-center gap-3 rounded-xl hover:bg-muted"
+            aria-label={t("toggleTheme")}
           >
             {isDark ? (
               <>
@@ -210,22 +260,23 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
               </>
             ) : (
               <>
-                <FiMoon size={22} fill="#666465" />
+                <FiMoon size={22} fill="none" />
                 <b className="text-text">Toggle Dark</b>{" "}
               </>
             )}
           </Button>
-
-          <Button
-            asChild
-            disabled={loading || !link}
-            className="h-11 w-full rounded-xl flex items-center justify-center gap-2 shadow-sm"
-          >
-            <a href={link ?? "#"} target="_blank" rel="noopener noreferrer">
-              <Icon size={17} />
-              Download
-            </a>
-          </Button>
+          {mounted && (
+            <Button
+              asChild
+              disabled={loading || !link}
+              className="h-11 w-full rounded-xl flex items-center justify-center gap-2 shadow-sm"
+            >
+              <a href={link ?? "#"} target="_blank" rel="noopener noreferrer">
+                <Icon size={17} />
+                Download
+              </a>
+            </Button>
+          )}
         </div>
       </aside>
     </>

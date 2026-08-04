@@ -1,6 +1,7 @@
+"use client";
 import { useMemo } from "react";
 
-export type Platform = "mac" | "windows" | "linux";
+type Platform = "mac" | "windows" | "linux";
 
 export function usePlatform() {
   return useMemo(() => {

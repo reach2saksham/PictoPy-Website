@@ -1,20 +1,20 @@
-import { getTranslations } from 'next-intl/server';
-import type { Metadata } from 'next';
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 
 export async function generateLocaleMetadata(
   locale: string,
-  namespace: string
+  namespace: string,
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace });
 
-  const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pictopy.aossie.org';
-  const siteUrl = rawSiteUrl.replace(/\/$/, '');
-  const localeUrl = locale === 'en' ? siteUrl : `${siteUrl}/${locale}`;
-
+  const rawSiteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://pictopy.aossie.org";
+  const siteUrl = rawSiteUrl.replace(/\/$/, "");
+  const localeUrl = locale === "en" ? siteUrl : `${siteUrl}/${locale}`;
 
   return {
-    title: t('metaTitle'),
-    description: t('metaDescription'),
+    title: t("metaTitle"),
+    description: t("metaDescription"),
     alternates: {
       canonical: localeUrl,
       languages: {
@@ -22,27 +22,30 @@ export async function generateLocaleMetadata(
         hi: `${siteUrl}/hi`,
       },
     },
+    icons: {
+      icon: "/brand/icons/pictopy_logo.svg",
+    },
     openGraph: {
-      title: t('metaTitle'),
-      description: t('metaDescription'),
+      title: t("metaTitle"),
+      description: t("metaDescription"),
       url: localeUrl,
 
-      siteName: 'AOSSIE',
+      siteName: "AOSSIE",
       images: [
         {
           url: `${siteUrl}/brand/icons/aossie_logo.svg`,
           width: 500,
           height: 500,
-          alt: 'AOSSIE Logo',
+          alt: "AOSSIE Logo",
         },
       ],
-      locale: locale === 'en' ? 'en_US' : 'hi_IN',
-      type: 'website',
+      locale: locale === "en" ? "en_US" : "hi_IN",
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
-      title: t('metaTitle'),
-      description: t('metaDescription'),
+      card: "summary_large_image",
+      title: t("metaTitle"),
+      description: t("metaDescription"),
       images: [`${siteUrl}/brand/icons/aossie_logo.svg`],
     },
   };

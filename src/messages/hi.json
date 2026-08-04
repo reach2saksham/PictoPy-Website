@@ -1,9 +1,104 @@
 {
   "Home": {
-    "heading": "ऑसी वेबपेज स्टार्टर",
-    "metaTitle": "ऑसी वेबपेज स्टार्टर - बहुभाषी नेक्स्ट.जेएस 16 टेम्पलेट",
-    "metaDescription": "ऑसी पोर्टल्स के लिए एक स्टार्टर टेम्पलेट जिसमें next-intl i18n/l10n और next-themes लाइट/डार्क थीम स्विचर शामिल हैं।"
+    "heading": "सबसे उन्नत ओपन-सोर्स गैलरी",
+    "metaTitle": "PictoPy - एआई आधारित ओपन-सोर्स फोटो गैलरी",
+    "metaDescription": "PictoPy एक एआई-संचालित ओपन-सोर्स डेस्कटॉप गैलरी एप्लिकेशन है जो Tauri, React, Rust और Python पर आधारित है।",
+
+    "Navbar": {
+      "documentation": "दस्तावेज़",
+      "contribute": "योगदान करें",
+      "aboutUs": "हमारे बारे में",
+      "contact": "संपर्क करें"
+    },
+
+    "Hero": {
+      "featureBadge": "नई सुविधा: AI टैगिंग",
+      "downloadNow": "अभी डाउनलोड करें",
+
+      "heroTitle": "सबसे उन्नत ओपन-सोर्स गैलरी",
+      "heroSubtitle": "ओपन-सोर्स गैलरी",
+      "heroDescription": "स्मार्ट गैलरी प्रबंधन। उन्नत AI आपकी तस्वीरों का स्थानीय रूप से विश्लेषण और व्यवस्थित करता है, जिससे आपकी सभी फाइलें सुरक्षित और आपके नियंत्रण में रहती हैं।"
+    },
+
+    "Download": {
+      "mobileDownload": "आप किसी भी पर्सनल कंप्यूटर पर PictoPy का उपयोग कर सकते हैं।",
+      "mobileDownloadText": "विंडोज, मैक या लिनक्स हो सकता है।",
+
+      "downloadMac": "Mac के लिए डाउनलोड करें",
+      "downloadWindows": "Windows के लिए डाउनलोड करें",
+      "downloadLinux": "Linux के लिए डाउनलोड करें",
+
+      "latest": "नवीनतम",
+      "multiOsSupport": "मल्टी-ओएस सपोर्ट",
+      "freeForever": "हमेशा के लिए मुफ़्त"
+    },
+
+    "MacMockDesc": {
+      "appDescription": "Tauri, React और Rust पर आधारित उन्नत डेस्कटॉप गैलरी एप्लिकेशन, जिसमें बुद्धिमान इमेज विश्लेषण और सहज प्रबंधन के लिए Python बैकएंड शामिल है।"
+    },
+
+    "MockUpWithDesc": {
+      "featureSectionTitle": "PictoPy और क्या कर सकता है?",
+      "featureSectionDescriptionHighlighting": "हाइलाइटिंग लाइन यहाँ है।",
+      "featureSectionDescription": "यहाँ PictoPy की AI आधारित सुविधाओं और स्मार्ट इमेज प्रबंधन का संक्षिप्त विवरण जोड़ें।",
+
+      "reviewButton": "PictoPy समीक्षा",
+      "testimonialLabel": "एक मेंटेनर / मेंटर की राय",
+
+      "featureHeading": "हर उपयोगकर्ता की आवश्यकता के लिए एक सुविधा।",
+      "featureSubheading": "PictoPy में अपनी पसंदीदा सुविधाओं का उपयोग करें।"
+    },
+
+    "Metrics": {
+      "metricsHeading": "उम्मीदों से बढ़कर",
+
+      "metric1Label": "मेट्रिक #1",
+      "metric1Value": "30%",
+      "metric1Description": "यहाँ वास्तविक प्रोजेक्ट आँकड़े या AI प्रदर्शन जोड़ें।",
+
+      "metric2Label": "मेट्रिक #2",
+      "metric2Value": "20+",
+      "metric2Description": "समर्थित सुविधाओं या योगदानकर्ताओं की संख्या।",
+
+      "metric3Label": "मेट्रिक #3",
+      "metric3Value": "373 MB",
+      "metric3Description": "प्रदर्शन के लिए अनुकूलित डेस्कटॉप एप्लिकेशन का आकार।",
+
+      "metric4Label": "मेट्रिक #4",
+      "metric4Value": "4.5/5",
+      "metric4Description": "औसत उपयोगकर्ता संतुष्टि रेटिंग।"
+    },
+
+    "SocialMediaCTA": {
+      "heading": "हमसे जुड़े रहें।",
+      "description": "समुदाय से जुड़ें और जानें कि दूसरे लोग PictoPy का अधिकतम लाभ कैसे उठाते हैं।",
+
+      "discord": {
+        "name": "Discord",
+        "memberCount": "7k",
+        "memberLabel": "सदस्य",
+        "description": "समुदाय से जुड़ें और जानें कि दूसरे लोग PictoPy का उपयोग कैसे करते हैं।",
+        "button": "जुड़ें"
+      },
+
+      "github": {
+        "name": "GitHub",
+        "followerCount": "2k",
+        "followerLabel": "फ़ॉलोअर्स",
+        "description": "नवीनतम रिलीज़, सुविधाओं और सुधारों की जानकारी से अपडेट रहें।",
+        "button": "स्टार करें"
+      },
+
+      "youtube": {
+        "name": "YouTube",
+        "subscriberCount": "40",
+        "subscriberLabel": "सब्सक्राइबर",
+        "description": "PictoPy और अन्य प्रोजेक्ट्स के बारे में जानने के लिए हमारा YouTube चैनल देखें।",
+        "button": "सब्सक्राइब करें"
+      }
+    }
   },
+
   "Error": {
     "title": "कुछ गलत हो गया",
     "description": "पेज रेंडर करते समय एक अप्रत्याशित त्रुटि आई है।",
@@ -15,10 +110,9 @@
     "home": "होम पेज पर जाएं"
   },
   "LanguageSwitcher": {
-    "label": "भाषा"
+    "selectLanguage": "भाषा बदलें"
   },
   "ThemeToggle": {
     "toggleTheme": "थीम बदलें"
   }
 }
-

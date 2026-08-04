@@ -1,7 +1,5 @@
-@import "tailwindcss";
+@import "../../index.css";
 
-/* Configure class-based dark mode selector in Tailwind CSS v4 */
-@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* Bind Tailwind v4 variables directly to semantic CSS variables */
@@ -101,7 +99,6 @@
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
 }
 
 body {

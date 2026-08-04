@@ -5,9 +5,11 @@ import { generateLocaleMetadata } from "@/i18n/metadata";
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { ThemeProvider } from "@/components/providers/theme-provider";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import "./globals.css";
+import ShuffleGrid from "@/components/ShuffleGrid";
+import Navbar from "@/components/ui/Navbar";
+import { ThemeProvider } from "@/context/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -22,7 +24,7 @@ const devanagari = Noto_Sans_Devanagari({
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+    params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
@@ -59,7 +61,13 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <LenisProvider>
-              {children}
+              <main className="relative min-h-screen bg-bg text-text">
+                <ShuffleGrid />
+                <div className="relative z-10 bg-transparent text-text py-4 px-4 min-[1250px]:px-29.5">
+                  <Navbar />
+                  {children}{" "}
+                </div>
+              </main>
             </LenisProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

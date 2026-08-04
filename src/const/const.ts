@@ -68,66 +68,43 @@ export const squareData = [
   },
 ];
 
-export const navItems = [
-  {
-    label: "Documentation",
-    href: "/documentation",
-  },
-  {
-    label: "Contribute",
-    href: "/contribute",
-  },
-  {
-    label: "About Us",
-    href: "/about",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
-];
-
 export const platformConfig = {
   mac: {
     icon: SiApple,
     label: "Download for Mac",
-    plateform: "mac",
+    platform: "mac",
   },
   windows: {
     icon: DiWindows,
     label: "Download for Windows",
-    plateform: "windows",
+    platform: "windows",
   },
   linux: {
     icon: SiLinux,
     label: "Download for Linux",
-    plateform: "linux",
+    platform: "linux",
   },
 } as const;
 
 export const metricsData = [
   {
-    label: "METRIC #1",
-    value: "30%",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    label: "metric1Label",
+    value: "metric1Value",
+    description: "metric1Description",
   },
   {
-    label: "METRIC #2",
-    value: "20+",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    label: "metric2Label",
+    value: "metric2Value",
+    description: "metric2Description",
   },
   {
-    label: "METRIC #3",
-    value: "373 MB",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    label: "metric3Label",
+    value: "metric3Value",
+    description: "metric3Description",
   },
   {
-    label: "METRIC #4",
-    value: "4.5/5",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
+    label: "metric4Label",
+    value: "metric4Value",
+    description: "metric4Description",
   },
 ];
