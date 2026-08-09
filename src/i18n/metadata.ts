@@ -10,7 +10,7 @@ export async function generateLocaleMetadata(
   const rawSiteUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://pictopy.aossie.org";
   const siteUrl = rawSiteUrl.replace(/\/$/, "");
-  const localeUrl = locale === "en" ? siteUrl : `${siteUrl}/${locale}`;
+  const localeUrl = `${siteUrl}/${locale}`;
 
   return {
     title: t("metaTitle"),
@@ -18,7 +18,7 @@ export async function generateLocaleMetadata(
     alternates: {
       canonical: localeUrl,
       languages: {
-        en: siteUrl,
+        en: `${siteUrl}/en`,
         hi: `${siteUrl}/hi`,
       },
     },

@@ -1,6 +1,13 @@
 import Script from "next/script";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import HomePage from "@/components/HomePage";
+import { routing } from "@/i18n/routing";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
+}
 
 export default async function Home({
   params,
@@ -8,6 +15,7 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Home" });
 
   // Schema.org Structured Data

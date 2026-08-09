@@ -3,7 +3,7 @@ import { Inter, Noto_Sans_Devanagari } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { generateLocaleMetadata } from "@/i18n/metadata";
 import { notFound } from "next/navigation";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { LenisProvider } from "@/components/providers/lenis-provider";
 import "./globals.css";
@@ -24,12 +24,13 @@ const devanagari = Noto_Sans_Devanagari({
 export async function generateMetadata({
   params,
 }: {
-    params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
+  setRequestLocale(locale);
   return generateLocaleMetadata(locale, "Home");
 }
 
@@ -47,9 +48,9 @@ export default async function RootLayout({
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
-
+  setRequestLocale(locale);
   // Provide messages to Client Components
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html
