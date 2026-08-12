@@ -1,9 +1,103 @@
 {
   "Home": {
-    "heading": "Aossie Webpage Starter",
-    "metaTitle": "Aossie Webpage Starter - Multi-lingual Next.js 16 Template",
-    "metaDescription": "A starter template for Aossie portals featuring next-intl i18n/l10n and next-themes light/dark theme switcher."
+    "heading": "The most advanced Open-Source Gallery",
+    "metaTitle": "PictoPy - AI Powered Open-Source Photo Gallery",
+    "metaDescription": "PictoPy is an AI-powered open-source desktop gallery application built with Tauri, React, Rust, and Python for intelligent photo management.",
+
+    "Navbar": {
+      "documentation": "Documentation",
+      "contribute": "Contribute",
+      "aboutUs": "About Us",
+      "contact": "Contact"
+    },
+
+    "Hero": {
+      "featureBadge": "Feature: Introducing AI Tagging",
+      "downloadNow": "Download now",
+
+      "heroTitle": "The most advanced",
+      "heroSubtitle": "Open-Source Gallery",
+      "heroDescription": "Intelligent Gallery Management. Advanced AI analyzes and organizes your photos locally, keeping every file secure and under your control."
+    },
+
+    "Download": {
+      "mobileDownload": "You can use PictoPy on any Personal Computer.",
+      "mobileDownloadText": "Be it Windows, Mac or Linux.",
+
+      "downloadMac": "Download for Mac",
+      "downloadWindows": "Download for Windows",
+      "downloadLinux": "Download for Linux",
+
+      "latest": "Latest",
+      "multiOsSupport": "Multi-OS Support",
+      "freeForever": "Free Forever"
+    },
+    "MacMockDesc": {
+      "appDescription": "Advanced desktop gallery application powered by Tauri, React, and Rust with a Python backend for intelligent image analysis and seamless management."
+    },
+
+    "MockUpWithDesc": {
+      "featureSectionTitle": "What else can PictoPy do?",
+      "featureSectionDescriptionHighlighting": "Highlighting line here.",
+      "featureSectionDescription": "Replace this placeholder with a concise explanation of PictoPy's AI-powered features and image management capabilities.",
+
+      "reviewButton": "PictoPy Review",
+      "testimonialLabel": "Testimonial From a Maintainer / Mentor",
+
+      "featureHeading": "There's a feature for every user's need.",
+      "featureSubheading": "Explore and use your favorite features in PictoPy."
+    },
+
+    "Metrics": {
+      "metricsHeading": "Surpasses Expectations",
+
+      "metric1Label": "Metric #1",
+      "metric1Value": "30%",
+      "metric1Description": "Improve this metric with actual project statistics or AI performance data.",
+
+      "metric2Label": "Metric #2",
+      "metric2Value": "20+",
+      "metric2Description": "Replace with the number of supported features or contributors.",
+
+      "metric3Label": "Metric #3",
+      "metric3Value": "373 MB",
+      "metric3Description": "Desktop application size optimized for performance.",
+
+      "metric4Label": "Metric #4",
+      "metric4Value": "4.5/5",
+      "metric4Description": "Average user satisfaction rating."
+    },
+
+    "SocialMediaCTA": {
+      "heading": "Stay in the loop.",
+      "description": "Join the community and learn how other people get the most out of PictoPy.",
+
+      "discord": {
+        "name": "Discord",
+        "memberCount": "7k",
+        "memberLabel": "members",
+        "description": "Get inside the community and learn how other people use PictoPy.",
+        "button": "Join"
+      },
+
+      "github": {
+        "name": "GitHub",
+        "followerCount": "2k",
+        "followerLabel": "followers",
+        "description": "Keep up to date with the latest releases, features and improvements.",
+        "button": "Star Us"
+      },
+
+      "youtube": {
+        "name": "YouTube",
+        "subscriberCount": "40",
+        "subscriberLabel": "subscribers",
+        "description": "Check out our YouTube channel to learn about PictoPy and even more projects.",
+        "button": "Subscribe"
+      }
+    }
   },
+
   "Error": {
     "title": "Something went wrong",
     "description": "An unexpected server or client error occurred while rendering the page.",
@@ -15,10 +109,9 @@
     "home": "Go to Home"
   },
   "LanguageSwitcher": {
-    "label": "Language"
+    "selectLanguage": "Change Language"
   },
   "ThemeToggle": {
     "toggleTheme": "Toggle theme"
   }
 }
-

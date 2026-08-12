@@ -13,3 +13,4 @@ are made under the terms of the [Developer Certificate of Origin](DCO.md).
 | -------------------------------- | ------------------ | ------------------ | ---------------------------- |
 | Bruno Woltzenlogel Paleo         | @Zahnentferner     | @b.wp              | zahnentferner@gmail.com      |
 | Saksham Jain                     | @reach2saksham     | @theonlypro        | reach2saksham2004@gmail.com  |
+| Rahul                            | @rahul-vyas-dev    | @rahulvyas_dev     | rahulvyas.5100@gmail.com     |

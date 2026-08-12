@@ -1,8 +1,13 @@
-import Image from "next/image";
 import Script from "next/script";
-import { getTranslations } from "next-intl/server";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import ThemeToggle from "@/components/ThemeToggle";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import HomePage from "@/components/HomePage";
+import { routing } from "@/i18n/routing";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({
+    locale,
+  }));
+}
 
 export default async function Home({
   params,
@@ -10,52 +15,34 @@ export default async function Home({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "Home" });
 
   // Schema.org Structured Data
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-     "name": t("heading"),
-    "description": t("metaDescription"),
-    "publisher": {
+    name: t("heading"),
+    description: t("metaDescription"),
+    publisher: {
       "@type": "Organization",
-      "name": "PictoPy",
-      "url": "https://pictopy.aossie.org",
-      "logo": "https://pictopy.aossie.org/brand/icons/pictopy_logo.svg",
+      name: "PictoPy",
+      url: "https://pictopy.aossie.org",
+      logo: "https://pictopy.aossie.org/brand/icons/pictopy_logo.svg",
     },
-    "inLanguage": locale,
+    inLanguage: locale,
   };
 
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-background-primary text-foreground-primary font-sans transition-colors duration-200">
+    <>
+      {" "}
       {/* Schema.org JSON-LD Structured Data */}
       <Script
         id="schema-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <main className="flex w-full max-w-md flex-col items-center justify-center p-8 bg-background-secondary rounded-2xl border border-border-default shadow-card gap-6">
-
-        <Image
-          src="/brand/icons/pictopy_logo.svg"
-          alt="PictoPy Logo"
-          width={80}
-          height={80}
-          priority
-          style={{ width: "auto", height: "auto" }}
-        />
-
-        <h1 className="text-2xl font-bold tracking-tight text-foreground-secondary text-center">
-          {t("heading")}
-        </h1>
-        
-        <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-center border-t border-border-default pt-6">
-          <LanguageSwitcher />
-          <ThemeToggle />
-        </div>
-      </main>
-    </div>
+      <HomePage />
+    </>
   );
 }

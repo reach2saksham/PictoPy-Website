@@ -2,7 +2,7 @@
 <div name="readme-top"></div>
 
 <!-- Organization Logo -->
-<div align="center" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+<div align="center" style="display: flex; align-items: center; justify-content: center; gap: 24px;">
   <img src="public/brand/icons/aossie_logo.svg" width="175" alt="AOSSIE logo" >
   <img src="public/brand/icons/pictopy_logo.svg" width="175" alt="PictoPy logo" />
 
@@ -45,7 +45,6 @@
   <img src="https://img.shields.io/youtube/channel/subscribers/UCKVVLbawY7Gej_3o2WKsoiA?style=flat&logo=youtube&logoColor=white%20&logoSize=auto&labelColor=FF0000&color=FF0000" alt="Youtube YouTube Badge"></a>
 </p>
 
-
 ---
 
 <div align="center">
@@ -84,36 +83,18 @@ It runs entirely offline, keeping your photos and their analysis private — no 
 
 ## 💻 Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Desktop Framework | Tauri |
-| Frontend | React, TypeScript, Tailwind CSS |
-| Rust Backend | Rust (file system & Tauri bridge) |
-| Python Backend | FastAPI, Python |
-| Object Detection | YOLOv11 |
-| Face Recognition | FaceNet, ONNX Runtime |
-| Face Clustering | DBSCAN |
-| Database | SQLite |
-| Image Processing | OpenCV |
-| State Management | Redux Toolkit |
-
----
-
-## 📋 Project Maturity & TODO Checklist
-
-In the checklist below, mark the items that have been completed for your project:
-
-* [x] The project has a logo (`public/brand/icons/pictopy_logo.svg`).
-* [x] The project has a favicon (`public/brand/icons/favicon.ico`).
-* [x] The web frontend:
-   - [x] Has proper title and metadata.
-   - [x] Has proper open graph metadata, to ensure that it is shown well when shared in social media.
-   - [x] Has a footer and header with AOSSIE logos and social handles.
-   - [x] Uses Next.js Server Components by default with Client Components (`"use client"`) introduced only where interactive state is required.
-   - [x] Is deployed to GitHub Pages via a GitHub Workflow (`.github/workflows/nextjs.yml`).
-   - [x] Has automated CI build and lint validation (`.github/workflows/ci.yml`).
-   - [x] Has CodeRabbit automated AI code review (`.coderabbit.yml`).
-   - [x] Has open-source legal compliance (`DCO.md`, `COPYRIGHT.md`, `Contributors.md`).
+| Layer             | Technology                        |
+| ----------------- | --------------------------------- |
+| Desktop Framework | Tauri                             |
+| Frontend          | React, TypeScript, Tailwind CSS   |
+| Rust Backend      | Rust (file system & Tauri bridge) |
+| Python Backend    | FastAPI, Python                   |
+| Object Detection  | YOLOv11                           |
+| Face Recognition  | FaceNet, ONNX Runtime             |
+| Face Clustering   | DBSCAN                            |
+| Database          | SQLite                            |
+| Image Processing  | OpenCV                            |
+| State Management  | Redux Toolkit                     |
 
 ---
 
@@ -139,50 +120,87 @@ In the checklist below, mark the items that have been completed for your project
 Here is a breakdown of the key i18n directories and files:
 
 ```text
-├── .github/
-│   └── workflows/          # GitHub Actions (CI, GitHub Pages deployment, merge conflict checks)
-├── next.config.ts          # Alias-wrapped Next configuration
-├── public/                 # Static assets, robots.txt, assetlinks.json, llms.txt
+├── .github/                        # GitHub configuration and CI workflows
+│   └── workflows/
+├── .coderabbit.yml                 # Automated AI Code Review configuration
+├── AGENTS.md                       # AI agent directives and rules
+├── CLAUDE.md                       # Notes for Claude or AI assistance
+├── COPYRIGHT.md
+├── Contributors.md
+├── DCO.md
+├── README.md
+├── Tasks.md
+├── eslint.config.mjs
+├── next.config.ts
+├── next-env.d.ts
+├── package.json
+├── package-lock.json
+├── postcss.config.mjs
+├── public/                         # Public static assets
 │   ├── .well-known/
 │   ├── llms.txt
 │   ├── robots.txt
 │   └── brand/
-│       ├── Brand.md            # Official AOSSIE brand guidelines document
-│       └── icons/             
-│           ├── aossie_logo.svg              # AOSSIE Vector logo
-│           ├── stability_nexus_logo.svg     # Vector logo
-│           └── favicon.ico                  # Browser tab icon
-├── src/
-│   ├── config/
-│   │   └── languages.ts        # Central registry of supported languages & locales
-│   ├── i18n/
-│   │   ├── routing.ts          # Core i18n routing parameters (locales, defaults)
-│   │   ├── request.ts          # Server-side translation dictionary loading configuration
-│   │   ├── metadata.ts         # Configuration data, SEO values, or reflection data for a project
-│   │   └── navigation.ts       # Type-safe navigation helpers (Link, useRouter, etc.)
-│   ├── messages/
-│   │   ├── en.json             # English translation dictionary
-│   │   └── hi.json             # Hindi translation dictionary
+│       ├── Brand.md
+│       └── icons/
+│           ├── aossie_logo.svg
+│           ├── pictopy_logo.svg
+│           ├── stability_nexus_logo.svg
+│           └── favicon.ico
+├── src/                            # Source files
+│   ├── App.tsx
+│   ├── Pages/                      # (legacy or extra pages folder if used)
 │   ├── app/
-│   │   ├── sitemap.ts          # Dynamically generated localized sitemaps
-│   │   └── [locale]/           # Localized route group
-│   │       ├── layout.tsx      # Multi-lingual layout injecting client context & translations
-│   │       ├── page.tsx        # Localized Landing Page ("use client")
-│   │       ├── globals.css     # Global styles for the app segment
-│   │       ├── error.tsx       # Localized Error Boundary page fallback
-│   │       └── not-found.tsx   # Localized 404 page fallback
+│   │   ├── sitemap.ts
+│   │   └── [locale]/
+│   │       ├── globals.css
+│   │       ├── layout.tsx
+│   │       ├── page.tsx
+│   │       ├── error.tsx
+│   │       └── not-found.tsx
+│   ├── assets/
 │   ├── components/
-│   │   ├── LanguageSwitcher.tsx # Dropdown element to switch interface locales interactively
-│   │   ├── ThemeToggle.tsx      # Multi-state theme switch with micro-animations
+│   │   ├── Download.tsx
+│   │   ├── Hero.tsx
+│   │   ├── LanguageSwitcher.tsx
+│   │   ├── MacMockDesc.tsx
+│   │   ├── Metrics.tsx
+│   │   ├── MockUp.tsx
+│   │   ├── MockUpWithDesc.tsx
+│   │   ├── ShuffleGrid.tsx
+│   │   ├── SocialMediaCTA.tsx
+│   │   ├── ThemeToggle.tsx
 │   │   └── providers/
-│   │       ├── theme-provider.tsx # Next-themes client wrapper component
-│   │       └── lenis-provider.tsx # Lenis smooth scrolling provider wrapper
-│   └── proxy.ts                # Next.js 16 Proxy Middleware for route and locale redirection
-├── .coderabbit.yml         # Automated AI Code Review configuration
-├── COPYRIGHT.md            # Copyright terms
-├── Contributors.md         # Project contributors list
-└── DCO.md                  # Developer Certificate of Origin
+│   │       ├── lenis-provider.tsx
+│   │       └── theme-provider.tsx
+│   │   └── ui/
+│   │       ├── Navbar.tsx
+│   │       └── button.tsx
+│   ├── config/
+│   ├── const/
+│   ├── context/
+│   ├── hooks/
+│   ├── i18n/
+│   │   ├── metadata.ts
+│   │   ├── navigation.ts
+│   │   ├── request.ts
+│   │   └── routing.ts
+│   ├── index.css
+│   ├── messages/
+│   │   ├── en.json
+│   │   └── hi.json
+│   └── proxy.ts
+├── tsconfig.json
+├── eslint.config.mjs
+└── .gitignore
+
 ```
+
+Notes:
+
+- The tree emphasizes the files and directories found at the time of scanning. Remove or add files here if the repository changes.
+- The repo uses a localized App Router layout under src/app/[locale] and several reusable UI components under src/components.
+- If you'd like, the README can be expanded to include brief descriptions for each top-level directory or to show a deeper tree for any particular area (for example, a full listing of src/components or public/brand/icons).
 
 ---
 
@@ -193,6 +211,7 @@ Here is a breakdown of the key i18n directories and files:
 To add support for a new language (e.g., French - `fr`):
 
 1. **Register the language:** Open [`src/config/languages.ts`](src/config/languages.ts) and add your new language to the `languages` array:
+
    ```typescript
    export const languages: Language[] = [
      { code: 'en', name: 'English', localName: 'English' },
@@ -202,6 +221,7 @@ To add support for a new language (e.g., French - `fr`):
    ```
 
 2. **Create the translation catalog:** Under `src/messages/`, create a new file named `fr.json`:
+
    ```json
    {
      "Home": {
@@ -217,18 +237,20 @@ To add support for a new language (e.g., French - `fr`):
 ### 2. Translating Text in Pages and Components
 
 #### Server Components (Recommended for Static Content)
+
 By default, server components can load translations statically without shipping translation JSONs to the client bundle:
 
 ```tsx
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
 
 export default function Section() {
-  const t = useTranslations('Home');
-  return <h1>{t('heading')}</h1>;
+  const t = useTranslations("Home");
+  return <h1>{t("heading")}</h1>;
 }
 ```
 
 #### Client Components
+
 If your component uses React hooks (e.g., `useState`), define it with `"use client"` and import from `next-intl`:
 
 ```tsx
@@ -249,15 +271,16 @@ export default function InteractiveButton() {
 When navigating between routes, always use the locale-aware navigation helpers imported from [`src/i18n/navigation.ts`](src/i18n/navigation.ts) instead of standard `next/link` or `next/navigation`:
 
 ```tsx
-import { Link } from '../../i18n/navigation';
+import { Link } from "../../i18n/navigation";
 
 // Will automatically resolve to /en/about or /hi/about based on active locale
-<Link href="/about">About Us</Link>
+<Link href="/about">About Us</Link>;
 ```
 
 For programmatic router navigation:
+
 ```typescript
-import { useRouter, usePathname } from '../../i18n/navigation';
+import { useRouter, usePathname } from "../../i18n/navigation";
 
 const router = useRouter();
 const pathname = usePathname();
@@ -290,6 +313,7 @@ Tailwind v4 is configured via CSS custom properties in [`src/app/[locale]/global
 ```
 
 #### Using Theme Classes
+
 To create element styles that adapt automatically to the user's selected theme, use semantic utility tokens instead of inline `dark:` utilities:
 
 ```tsx
@@ -305,6 +329,7 @@ To create element styles that adapt automatically to the user's selected theme, 
 The starter repository integrates the `lenis` library to provide smooth, high-performance inertial scrolling across all browsers.
 
 #### Customizing Lenis Options
+
 To configure scroll parameters (e.g., dampening velocity, custom scroll durations, or scroll directions), update the parameters passed to the `ReactLenis` component in [`lenis-provider.tsx`](src/components/providers/lenis-provider.tsx):
 
 ```tsx
@@ -316,7 +341,7 @@ To configure scroll parameters (e.g., dampening velocity, custom scroll duration
 To access the active Lenis instance or bind custom scroll animations programmatically in your page components, use the `useLenis` hook:
 
 ```typescript
-import { useLenis } from 'lenis/react';
+import { useLenis } from "lenis/react";
 
 const lenis = useLenis(({ scroll, limit, velocity, direction }) => {
   // Bind your scroll logic or animation timelines here
@@ -330,11 +355,13 @@ const lenis = useLenis(({ scroll, limit, velocity, direction }) => {
 ### Getting Started
 
 Install the project dependencies:
+
 ```bash
 npm install
 ```
 
 Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -344,6 +371,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it. The application 
 ### Building for Production
 
 Compile and optimize the project:
+
 ```bash
 npm run build
 ```
@@ -353,43 +381,10 @@ This compiles optimized static pages under the `/[locale]` path and checks all T
 ### Running in Production
 
 Start the optimized server:
+
 ```bash
 npm run start
 ```
-
----
-
-## ⚙️ Initial Project Setup Checklist
-
-When bootstrapping a new project from this starter repository, complete the following `TODO` setup checklist to align the repository with your project's branding, metadata, AI agent guidelines, and hosting configurations:
-
-### 1. Project Identity & Header Details
-
-- **Project Title & Logo ([`README.md`](README.md))**: Update the main project header logo (`public/brand/icons/logo.svg`), title `<h1>TODO: Project Name</h1>`, project description, feature list, and tech stack.
-- **AI Agent Context ([`AGENTS.md`](AGENTS.md))**: Replace `# TODO: Project Title` and add project-specific directives and rules for AI coding agents.
-- **LLM Manifest ([`public/llms.txt`](public/llms.txt))**: Update `# TODO: Project Title` in the root LLM crawler policy.
-- **Community & Social Links ([`Contributors.md`](Contributors.md))**: Replace the `[TODO Channel](TODO)` placeholder with your project's Discord, Telegram, or chat channel link.
-
-### 2. Domain Names & Search Engine Crawlers
-
-- **Sitemap Generator ([`src/app/sitemap.ts`](src/app/sitemap.ts))**: Replace the default fallback domain `https://project.aossie.org` with your project's production domain in the source code or set the `NEXT_PUBLIC_SITE_URL` environment variable at build time (e.g., in `.github/workflows/nextjs.yml` or build pipeline settings).
-- **Search Crawler Rules ([`public/robots.txt`](public/robots.txt))**: Replace the sitemap URL placeholder domain `TODO 'project.aossie.org'` with your actual production domain.
-
-### 3. Branding Guidelines & Assets
-
-- **Logo & Favicons ([`public/brand/icons/`](public/brand/icons/))**: Replace `aossie_logo.svg` and `favicon.ico` with your organization's custom logos.
-- **Brand Documentation ([`public/brand/Brand.md`](public/brand/Brand.md))**: Document your custom color hex codes, typography selections, and asset paths here to guide future developers and AI coding agents.
-
-### 4. SEO & i18n Localization Metadata
-
-- **Schema.org JSON-LD ([`src/app/[locale]/page.tsx`](src/app/[locale]/page.tsx))**: Locate the `jsonLd` object inside the `Home` component. Update the `publisher.name`, `publisher.url`, and `publisher.logo` fields from `TODO` placeholders to your project metadata.
-- **Translation Catalogs ([`src/messages/en.json`](src/messages/en.json), [`src/messages/hi.json`](src/messages/hi.json))**: Update the `heading`, `metaTitle`, and `metaDescription` keys with your project's localized titles and descriptions.
-
-### 5. Mobile & AI Platform Configurations
-
-- **Android App Links ([`public/.well-known/assetlinks.json`](public/.well-known/assetlinks.json))**: Update the package name `TODO:org.aossie.starter` and insert your Android application certificate SHA-256 fingerprint (`TODO:...`).
-- **AI Agent Plugins ([`public/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json))**: Replace all `TODO` placeholders for `name_for_human`, `name_for_model`, `description_for_human`, `description_for_model`, host URLs, contact emails, and legal info links.
-
 
 ---
 
