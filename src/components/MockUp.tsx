@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { FaApple } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa6";
 import { IoBatteryFullOutline } from "react-icons/io5";

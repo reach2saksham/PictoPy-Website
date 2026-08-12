@@ -7,11 +7,11 @@ export function usePlatform() {
   return useMemo(() => {
     const ua = navigator.userAgent.toLowerCase();
 
-    const isMobile =
-      /android|iphone|ipad|ipod|mobile/i.test(ua);
+    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(ua);
 
     let platform: Platform = "linux";
-
+    
+    if (!ua) platform = "windows";
     if (ua.includes("mac")) platform = "mac";
     else if (ua.includes("win")) platform = "windows";
 

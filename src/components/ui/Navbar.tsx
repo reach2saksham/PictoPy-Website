@@ -9,7 +9,7 @@ import React, {
 import { Button } from "@/components/ui/button";
 import { ThemeContext, ThemeOptions } from "@/context/theme-provider";
 import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import PictoPyLogo from "@/assets/pictopy_logo.svg";
 import { platformConfig } from "@/const/const";
 import { usePlatform } from "@/hooks/usePlatform";
@@ -128,6 +128,7 @@ const Navbar: React.FC = () => {
           size="icon"
           className="min-[1000px]:hidden rounded-lg"
           onMouseEnter={() => setSidebarOpen(true)}
+          onClick={() => setSidebarOpen(true)}
         >
           <FiMenu size={24} />
         </Button>
@@ -185,7 +186,7 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
   return (
     <>
       {/* Overlay */}
-      <div
+      <button
         className={`fixed bg-bg z-40 transition-opacity duration-300 min-[1000px]:hidden ${
           sidebarOpen
             ? "opacity-100 pointer-events-auto"

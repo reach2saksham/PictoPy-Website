@@ -76,6 +76,7 @@ export default function SocialMediaCTA() {
             </p>
 
             <button
+              type="button"
               className="inline-flex w-fit items-center gap-2 text-[14px] font-medium text-black dark:text-white transition-all hover:gap-3"
               onClick={() => {
                 window.open(card.link, "_blank", "noopener,noreferrer");

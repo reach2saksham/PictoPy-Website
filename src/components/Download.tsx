@@ -77,7 +77,7 @@ function DownloadButton({ value }: DownloadButtonProps) {
       disabled={loading}
       onClick={() => {
         if (link) {
-          window.open(link, "_blank");
+          window.open(link, "_blank", "noopener,noreferrer");
         }
       }}
       className="h-9 px-3 rounded-lg flex items-center gap-2 text-sm font-medium transition"
