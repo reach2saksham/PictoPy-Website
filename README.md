@@ -171,8 +171,7 @@ Here is a breakdown of the key i18n directories and files:
 │   │   ├── SocialMediaCTA.tsx
 │   │   ├── ThemeToggle.tsx
 │   │   └── providers/
-│   │       ├── lenis-provider.tsx
-│   │       └── theme-provider.tsx
+│   │       └── lenis-provider.tsx
 │   │   └── ui/
 │   │       ├── Navbar.tsx
 │   │       └── button.tsx
@@ -191,7 +190,6 @@ Here is a breakdown of the key i18n directories and files:
 │   │   └── hi.json
 │   └── proxy.ts
 ├── tsconfig.json
-├── eslint.config.mjs
 └── .gitignore
 
 ```
@@ -380,7 +378,7 @@ This compiles optimized static pages under the `/[locale]` path and checks all T
 
 ### Running in Production
 
-Start the optimized server:
+Start the optimized server(This is optional if you are deploying to a static hosting service like GitHub Pages):
 
 ```bash
 npm run start

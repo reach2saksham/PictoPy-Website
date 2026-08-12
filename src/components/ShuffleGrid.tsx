@@ -22,7 +22,7 @@ const shuffle = (array: (typeof squareData)[0][]) => {
 
 
 const ShuffleGrid = () => {
-  const timeoutRef = useRef<any>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [squares, setSquares] = useState(squareData);
   useEffect(() => {
     const shuffleSquares = () => {
@@ -32,7 +32,11 @@ const ShuffleGrid = () => {
 
     shuffleSquares();
 
-    return () => clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   return (
