@@ -1,20 +1,30 @@
 "use client";
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 
 type Platform = "mac" | "windows" | "linux";
 
 export function usePlatform() {
-  return useMemo(() => {
-    const ua = navigator.userAgent.toLowerCase();
+  const [platform, setPlatform] = useState<Platform>("windows");
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [mounted, setMounted] = useState<boolean>(false);
 
-    const isMobile = /android|iphone|ipad|ipod|mobile/i.test(ua);
+  useEffect(() => {
+    const ua =
+      typeof navigator !== "undefined" ? navigator.userAgent.toLowerCase() : "";
 
-    let platform: Platform = "linux";
-    
-    if (!ua) platform = "windows";
-    if (ua.includes("mac")) platform = "mac";
-    else if (ua.includes("win")) platform = "windows";
+    const mobile = /android|iphone|ipad|ipod|mobile/i.test(ua);
+    setIsMobile(mobile);
 
-    return { platform, isMobile };
+    let detectedPlatform: Platform = "linux";
+    if (!ua) detectedPlatform = "windows";
+    else if (ua.includes("mac")) detectedPlatform = "mac";
+    else if (ua.includes("win")) detectedPlatform = "windows";
+    else if (ua.includes("linux")) detectedPlatform = "linux";
+
+    setPlatform(detectedPlatform);
+    setMounted(true);
   }, []);
+
+  return { platform, isMobile, mounted };
 }
+
