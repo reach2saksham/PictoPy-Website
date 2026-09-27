@@ -92,9 +92,9 @@ const Navbar: React.FC = () => {
   const isDark = theme === ThemeOptions.Dark;
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-  const platform = usePlatform();
-  const { link } = useDownloadLink(platform.platform);
-  const { icon: Icon } = platformConfig[platform.platform];
+  const { platform } = usePlatform();
+  const { link } = useDownloadLink(platform ?? "windows");
+  const Icon = platform ? platformConfig[platform].icon : null;
 
   const t = useTranslations("ThemeToggle");
   const tN = useTranslations("Home.Navbar");
@@ -156,14 +156,14 @@ const Navbar: React.FC = () => {
             )}
           </Button>
           <div className="mx-3 h-6 w-px border border-text3" />
-          {mounted && (
+          {mounted && Icon && (
             <Button
               asChild
               className="h-9 px-3 rounded-lg flex items-center gap-2 text-sm font-medium transition"
             >
               <a href={link} download>
                 <Icon size={17} />
-                Download
+                {tN("download")}
               </a>
             </Button>
           )}
@@ -198,9 +198,9 @@ type MobileSidebarProps = {
 function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const isDark = theme === ThemeOptions.Dark;
-  const platform = usePlatform();
-  const { link } = useDownloadLink(platform.platform);
-  const { icon: Icon } = platformConfig[platform.platform];
+  const { platform } = usePlatform();
+  const { link } = useDownloadLink(platform ?? "windows");
+  const Icon = platform ? platformConfig[platform].icon : null;
   const [mounted, setMounted] = useState(false);
   const t = useTranslations("ThemeToggle");
   const tN = useTranslations("Home.Navbar");
@@ -285,23 +285,23 @@ function MobileSidebar({ sidebarOpen, setSidebarOpen }: MobileSidebarProps) {
             {isDark ? (
               <>
                 <FiSun size={22} />
-                <b className="text-text">Toggle Light</b>{" "}
+                <b className="text-text">{t("toggleLight")}</b>{" "}
               </>
             ) : (
               <>
                 <FiMoon size={22} fill="none" />
-                <b className="text-text">Toggle Dark</b>{" "}
+                <b className="text-text">{t("toggleDark")}</b>{" "}
               </>
             )}
           </Button>
-          {mounted && (
+          {mounted && Icon && (
             <Button
               asChild
               className="h-11 w-full rounded-xl flex items-center justify-center gap-2 shadow-sm"
             >
               <a href={link} download>
                 <Icon size={17} />
-                Download
+                {tN("download")}
               </a>
             </Button>
           )}

@@ -56,6 +56,7 @@ export default function Faq() {
 
               {/* Animated answer */}
               <div
+                aria-hidden={!isOpen}
                 className={`grid transition-all duration-300 ease-in-out ${
                   isOpen
                     ? "grid-rows-[1fr] pb-7 opacity-100"

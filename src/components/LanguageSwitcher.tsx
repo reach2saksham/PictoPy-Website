@@ -14,6 +14,7 @@ export default function LanguageSwitcher() {
   const [isPending, startTransition] = useTransition();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const optionRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const currentLanguage =
     languages.find((lang) => lang.code === locale) ?? languages[0];
@@ -38,6 +39,28 @@ export default function LanguageSwitcher() {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
+
+  // Move focus into the listbox on the selected option when it opens
+  useEffect(() => {
+    if (!open) return;
+    const selectedIndex = languages.findIndex((lang) => lang.code === locale);
+    optionRefs.current[selectedIndex === -1 ? 0 : selectedIndex]?.focus();
+  }, [open, locale]);
+
+  const handleListboxKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    event.preventDefault();
+
+    const focusedIndex = optionRefs.current.findIndex(
+      (option) => option === document.activeElement,
+    );
+    const nextIndex =
+      event.key === "ArrowDown"
+        ? Math.min(focusedIndex + 1, languages.length - 1)
+        : Math.max(focusedIndex - 1, 0);
+
+    optionRefs.current[nextIndex]?.focus();
+  };
 
   const handleLanguageChange = (newLocale: string) => {
     setOpen(false);
@@ -72,6 +95,7 @@ export default function LanguageSwitcher() {
       <div
         role="listbox"
         aria-label={t("selectLanguage")}
+        onKeyDown={handleListboxKeyDown}
         className={`absolute left-0 top-[calc(100%+10px)] z-50 min-w-44 origin-top-left rounded-xl border border-border bg-bg/95 p-1.5 shadow-[0_12px_32px_rgba(0,0,0,0.14)] backdrop-blur-md transition-all duration-200 ease-out dark:shadow-[0_12px_32px_rgba(0,0,0,0.6)] ${
           open
             ? "visible translate-y-0 scale-100 opacity-100"
@@ -82,12 +106,15 @@ export default function LanguageSwitcher() {
           {t("selectLanguage")}
         </p>
 
-        {languages.map((lang) => {
+        {languages.map((lang, index) => {
           const isActive = lang.code === locale;
 
           return (
             <button
               key={lang.code}
+              ref={(el) => {
+                optionRefs.current[index] = el;
+              }}
               type="button"
               role="option"
               aria-selected={isActive}

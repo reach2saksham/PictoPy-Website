@@ -56,7 +56,6 @@ export default function SocialMediaCTA() {
             href={card.link}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t(card.title)}
             className="group flex min-h-40 md:min-h-42.5 cursor-pointer flex-col gap-4.5 rounded-xl border border-[#00000029] bg-[linear-gradient(112.57deg,rgba(17,18,20,0.075)_4.87%,rgba(12,13,15,0.09)_75.88%)] shadow-[inset_0px_1px_1px_1px_rgba(255,255,255,0.15)] dark:border-white/6 dark:bg-[linear-gradient(112.57deg,rgba(17,18,20,0.75)_4.87%,rgba(12,13,15,0.9)_75.88%)] dark:shadow-[inset_0px_1px_1px_1px_rgba(255,255,255,0.15)] backdrop-blur-[10px] px-6 py-6.5 transition-all duration-300 leading-[22.4px] hover:-translate-y-1 hover:border-black/25 hover:shadow-[0_12px_36px_rgba(0,0,0,0.12)] dark:hover:border-white/15 dark:hover:shadow-[0_12px_36px_rgba(0,0,0,0.55)]"
           >
             <div className="flex items-center justify-between">

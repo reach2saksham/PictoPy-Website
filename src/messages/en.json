@@ -8,7 +8,8 @@
       "documentation": "Documentation",
       "contribute": "Contribute",
       "aboutUs": "About Us",
-      "contact": "Contact"
+      "contact": "Contact",
+      "download": "Download"
     },
 
     "Hero": {
@@ -45,6 +46,7 @@
 
       "reviewButton": "PictoPy Review",
       "testimonialQuote": "PictoPy shows what open source does best: state-of-the-art AI for everyone's photo library, with privacy built in rather than promised. I'm proud of what this community keeps building.",
+      "testimonialAuthor": "Dr. Bruno Woltzenlogel Paleo",
       "testimonialLabel": "Founder & Mentor, AOSSIE",
 
       "featureHeading": "There's a feature for every user's need.",
@@ -184,6 +186,8 @@
     "selectLanguage": "Change Language"
   },
   "ThemeToggle": {
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Toggle theme",
+    "toggleLight": "Toggle Light",
+    "toggleDark": "Toggle Dark"
   }
 }

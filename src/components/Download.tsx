@@ -116,6 +116,8 @@ function VersionBar({ latest, multiOsSupport, freeForever }: VersionBarProps) {
   });
 
   useEffect(() => {
+    let cancelled = false;
+
     async function getRelease() {
       try {
         const res = await fetch(GITHUB_RELEASE_API);
@@ -123,6 +125,8 @@ function VersionBar({ latest, multiOsSupport, freeForever }: VersionBarProps) {
         if (!res.ok) throw new Error("Failed");
 
         const data = await res.json();
+
+        if (cancelled) return;
 
         setRelease({
           version: data.tag_name,
@@ -134,6 +138,10 @@ function VersionBar({ latest, multiOsSupport, freeForever }: VersionBarProps) {
     }
 
     getRelease();
+
+    return () => {
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 

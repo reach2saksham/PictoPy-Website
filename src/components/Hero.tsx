@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Content */}
       <div className="text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-1.5 sm:gap-3 whitespace-nowrap font-medium rounded-[43px] border dark:border-[#9F8B4B] bg-black dark:bg-[#1C1D15] px-2.5 sm:px-3 py-[5.95px] text-xs min-[480px]:text-sm dark:shadow-[0px_0px_20px_0px_#F5306B1A]">
+        <div className="inline-flex items-center gap-1.5 sm:gap-3 whitespace-nowrap font-medium rounded-[43px] border dark:border-[#9F8B4B] bg-black dark:bg-[#1C1D15] px-2.5 sm:px-3 py-[5.95px] text-xs xs:text-sm dark:shadow-[0px_0px_20px_0px_#F5306B1A]">
           <span className="text-[#ffffff]">
             {t("featureBadge")}
           </span>
@@ -37,7 +37,7 @@ export default function Hero() {
             href="https://aossie.org/en"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-1 text-[13px] min-[480px]:text-sm font-medium tracking-[0.2px] text-[#606060] dark:text-text3 transition-colors duration-200 hover:text-black dark:hover:text-white"
+            className="group inline-flex items-center gap-1 text-[13px] xs:text-sm font-medium tracking-[0.2px] text-[#606060] dark:text-text3 transition-colors duration-200 hover:text-black dark:hover:text-white"
           >
             <span>
               {t.rich("poweredBy", {
@@ -58,7 +58,7 @@ export default function Hero() {
 
         {/* Heading */}
         <h1
-          className="mt-6 min-[411px]:mt-2 text-4xl min-[480px]:text-5xl font-semibold text-[#202020] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] dark:text-white dark:[text-shadow:0px_4px_4px_rgba(0,0,0,0.15)] leading-tight tracking-tight md:text-[64px]"
+          className="mt-6 min-[411px]:mt-2 text-4xl xs:text-5xl font-semibold text-[#202020] drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)] dark:text-white dark:[text-shadow:0px_4px_4px_rgba(0,0,0,0.15)] leading-tight tracking-tight md:text-[64px]"
           id="downloads-section"
         >
           {t("heroTitle")}

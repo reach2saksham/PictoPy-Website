@@ -50,7 +50,7 @@ async function MockUpWithDesc({ image }: { image: string }) {
 
               <div className="flex flex-col leading-tight">
                 <span className="text-[14px] font-semibold text-black dark:text-white">
-                  Dr. Bruno Woltzenlogel Paleo
+                  {t("testimonialAuthor")}
                 </span>
                 <span className="text-[12px] text-text3">
                   {t("testimonialLabel")}
@@ -65,12 +65,12 @@ async function MockUpWithDesc({ image }: { image: string }) {
         </div>
       </section>
 
-      <div className="font-medium text-[20px] text-center place-self-center text-text2 max-w-100 mt-32">
+      <h2 className="font-medium text-[20px] text-center place-self-center text-text2 max-w-100 mt-32">
         <span className="text-[#000000] dark:text-text">
           {t("featureHeading")}{" "}
         </span>
         <span>{t("featureSubheading")}</span>
-      </div>
+      </h2>
     </>
   );
 }

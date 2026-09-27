@@ -57,6 +57,14 @@ export function useDownloadLink(platform: Platform) {
     FALLBACK_RELEASE.downloads[platform],
   );
 
+  // Reset to the pinned link whenever the platform changes so a previous
+  // platform's link never lingers while (or if) the live asset resolves.
+  const [prevPlatform, setPrevPlatform] = useState(platform);
+  if (platform !== prevPlatform) {
+    setPrevPlatform(platform);
+    setLink(FALLBACK_RELEASE.downloads[platform]);
+  }
+
   useEffect(() => {
     let mounted = true;
 
